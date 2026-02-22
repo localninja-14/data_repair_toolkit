@@ -2,9 +2,8 @@ import sys
 import os
 from loader import load_file
 from validator import validate_dataset
-from column_standardizer import standardize_columns
 from pdf_report import generate_pdf_report
-from cleaner import remove_duplicates, remove_empty_rows, fill_missing_values
+from cleaner import remove_duplicates, remove_empty_rows, fill_missing_values, standardize_column_names
 
 def create_output_folder():
     if not os.path.exists("output"):
@@ -36,7 +35,7 @@ def main():
     initial_missing = validation_summary["missing_values"]
     initial_empty_rows = validation_summary["empty_rows"]
 
-    df = standardize_columns(df)
+    df = standardize_column_names(df)
 
     df = remove_duplicates(df)
 

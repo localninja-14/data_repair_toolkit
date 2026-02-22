@@ -1,5 +1,13 @@
-name,age,city
-Alice,25,New York
-Bob,30,Los Angeles
-
-Charlie,22,   Chicago
+ID,Full_Name,Join_Date,Email_Address,Salary,Region
+1,John Doe,01/02/2024,john.doe@gmail.com,50000,East
+2,Jon Doe,2024-02-01,j.doe@gmail,52000,east
+3,Jane Smith,Feb 15 2024,jane.smith@company.co.uk,$60,000,West
+4,Jane  Smith,15-02-24,jane.smith@company.co.uk,60000,West
+5,Bob Brown,2024.03.10,bob@brown,not_disclosed,North
+6,John Doe,01/02/2024,john.doe@gmail.com,50000,East
+7,,03-12-2023,invalid-email@@com,45000,South
+8,Alice Wonderland,12/01/24,alice@wonderland.com,75k,South
+9,ALICE WONDERLAND,2024/01/12,alice@wonderland.com,75000,south
+10,Kevin Malone,2024-05-20,kevin@dundermifflin.c,55000,
+11,Kevin Malone,2024-05-20,kevin@dundermifflin.c,55000,Central
+12,Emily Davis,2024-06-01,emily.davis@company.com,65000,North
