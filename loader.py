@@ -20,15 +20,18 @@ def load_file(file):
     if hasattr(file, "seek"):
         file.seek(0)
 
+    bad_rows =0
     if file_type == "csv":
-        if hasattr(file, "read"):
-            df = pd.read_csv(file)
-        else:
-            df = pd.read_csv(file)
+            try:
+                df = pd.read_csv(file)
+            except pd.errors.ParserError:
+                df = pd.read_csv(file, on_bad_lines='skip')
+                bad_rows = "unknown - malformed rows skipped"
     else:
-        if hasattr(file, "read"):
+        try:
             df = pd.read_excel(file)
-        else:
-            df = pd.read_excel(file)
-
-    return df, file_type
+        except Exception as e:
+            raise ValueError(f"Excel file reading error: {e}")
+            
+    return df, file_type, bad_rows
+    

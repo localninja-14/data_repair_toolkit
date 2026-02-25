@@ -14,9 +14,9 @@ from cleaner import (
     fill_missing_context
 )
 from pdf_report import generate_pdf_report
+from loader import load_file
 
 st.set_page_config(page_title="Data Cleaning Toolkit V2", layout="wide")
-
 st.title("💎 Data Cleaning Toolkit V2")
 
 st.header("1️⃣ Upload Files")
@@ -28,10 +28,11 @@ if uploaded_files:
     st.success(f"{len(uploaded_files)} file(s) uploaded successfully!")
 
     st.header("2️⃣ Preview First File")
-    first_file = uploaded_files[0]
-    df_preview, file_type = load_file(first_file)
+    df_preview, file_type, bad_rows_preview = load_file(uploaded_files[0])
     st.dataframe(df_preview.head(10))
-
+    if bad_rows_preview:
+        st.warning(f"Preview file contains bad/malformed rows: {bad_rows_preview}")
+    
     st.header("3️⃣ Cleaning Rules")
     rules = {
         "standardize_cols": st.checkbox("Standardize Column Names", value=True),
@@ -59,7 +60,7 @@ if uploaded_files:
         total_files = len(uploaded_files)
 
         for idx, file in enumerate(uploaded_files):
-            df, file_type = load_file(file)
+            df, file_type, bad_rows = load_file(file)
             validation_summary = validate_dataset(df)
 
             if rules["standardize_cols"]:
@@ -78,15 +79,12 @@ if uploaded_files:
                 df = remove_fuzzy_duplicates(df, column_list=fuzzy_cols)
             if rules["fill_missing_context"]:
                 df = fill_missing_context(df)
-
-            duplicates_removed = validation_summary["duplicate_rows"]
-            empty_rows_removed = validation_summary["empty_rows"]
-            missing_values_handled = validation_summary["missing_values"]
-
+           
             cleaning_summary = {
-                "duplicates_removed": duplicates_removed,
-                "empty_rows_removed": empty_rows_removed,
-                "missing_values_handled": missing_values_handled,
+                "duplicates_removed": validation_summary["duplicate_rows"],
+                "empty_rows_removed": validation_summary["empty_rows"],
+                "missing_values_handled": validation_summary["missing_values"],
+                "bad_rows_skipped": bad_rows,
                 "final_rows": df.shape[0]
             }
 
@@ -104,9 +102,10 @@ if uploaded_files:
                 "file": filename,
                 "rows_before": validation_summary["total_rows"],
                 "rows_after": df.shape[0],
-                "duplicates_removed": duplicates_removed,
-                "empty_rows_removed": empty_rows_removed,
-                "missing_handled": missing_values_handled,
+                "duplicates_removed": validation_summary["duplicate_rows"],
+                "empty_rows_removed": validation_summary["empty_rows"],
+                "missing_handled": validation_summary["missing_values"],
+                "bad_rows_skipped": bad_rows,
                 "cleaned_file_path": cleaned_path,
                 "report_path": report_path
             })
