@@ -1,0 +1,206 @@
+[
+    {
+        "column": "Fiscal Year",
+        "confidence": 0.9,
+        "notes": "Column mostly numeric; remove symbols and commas.",
+        "action": "coerce_to_float"
+    },
+    {
+        "column": "Unique Identifier",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Deal Number",
+        "confidence": 0.9,
+        "notes": "Column mostly numeric; remove symbols and commas.",
+        "action": "coerce_to_float"
+    },
+    {
+        "column": "Decision",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Decision Date",
+        "confidence": 0.9,
+        "notes": "Column mostly date-like; parse to ISO format.",
+        "action": "parse_date"
+    },
+    {
+        "column": "Effective Date",
+        "confidence": 0.9,
+        "notes": "Column mostly date-like; parse to ISO format.",
+        "action": "parse_date"
+    },
+    {
+        "column": "Expiration Date",
+        "confidence": 0.9,
+        "notes": "Column mostly date-like; parse to ISO format.",
+        "action": "parse_date"
+    },
+    {
+        "column": "Brokered ",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Deal Cancelled",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Country",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Program",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Policy Type",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Decision Authority",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Primary Export Product NAICS/SIC code",
+        "confidence": 0.9,
+        "notes": "Column mostly numeric; remove symbols and commas.",
+        "action": "coerce_to_float"
+    },
+    {
+        "column": "Product Description",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Term",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Primary Applicant",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Primary Lender",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Primary Exporter",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Primary Exporter City",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Primary Exporter State Code",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Primary Exporter State Name",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Primary Borrower",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Primary Source of Repayment (PSOR)",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Working Capital Delegated Authority",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Approved/Declined Amount",
+        "confidence": 0.9,
+        "notes": "Column mostly numeric; remove symbols and commas.",
+        "action": "coerce_to_float"
+    },
+    {
+        "column": "Disbursed/Shipped Amount",
+        "confidence": 0.9,
+        "notes": "Column mostly numeric; remove symbols and commas.",
+        "action": "coerce_to_float"
+    },
+    {
+        "column": "Undisbursed Exposure Amount",
+        "confidence": 0.9,
+        "notes": "Column mostly numeric; remove symbols and commas.",
+        "action": "coerce_to_float"
+    },
+    {
+        "column": "Outstanding Exposure Amount",
+        "confidence": 0.9,
+        "notes": "Column mostly numeric; remove symbols and commas.",
+        "action": "coerce_to_float"
+    },
+    {
+        "column": "Small Business Authorized Amount",
+        "confidence": 0.9,
+        "notes": "Column mostly numeric; remove symbols and commas.",
+        "action": "coerce_to_float"
+    },
+    {
+        "column": "Woman Owned Authorized Amount",
+        "confidence": 0.9,
+        "notes": "Column mostly numeric; remove symbols and commas.",
+        "action": "coerce_to_float"
+    },
+    {
+        "column": "Minority Owned Authorized Amount",
+        "confidence": 0.9,
+        "notes": "Column mostly numeric; remove symbols and commas.",
+        "action": "coerce_to_float"
+    },
+    {
+        "column": "Loan Interest Rate",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    },
+    {
+        "column": "Multiyear Working Capital Extension ",
+        "confidence": 0.9,
+        "notes": "Text/categorical column; lowercase and strip.",
+        "action": "normalize_text"
+    }
+]
