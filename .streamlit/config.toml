@@ -1,0 +1,24 @@
+[server]
+# Prevent large file uploads
+maxUploadSize = 10
+
+# Prevent large message payloads
+maxMessageSize = 50
+
+# Request timeout
+requestTimeoutSec = 70
+
+# Memory limit per session
+enableMemoryGuard = true
+
+[client]
+# Client-side timeout
+showErrorDetails = false
+
+[logger]
+# Reduce logging verbosity
+level = "error"
+
+[browser]
+# Prevent console errors from spamming
+gatherUsageStats = false
