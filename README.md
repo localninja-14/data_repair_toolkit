@@ -6,7 +6,7 @@ A sophisticated data diagnostic tool that analyzes datasets and reveals exactly 
 
 ## 🚀 Try It Now (Free)
 
-### [Click Here to Profile Your Dataset](https://share.streamlit.io/[your-username]/data_repair_toolkit/streamlit_app.py)
+### [Click Here to Profile Your Dataset](https://datarepairtoolkit-profile-5000-rows.streamlit.app)
 
 Upload your CSV or XLSX file (first 5,000 rows), get instant diagnostics:
 - Detailed column analysis
@@ -111,7 +111,7 @@ python main.py path/to/your/data.csv
 
 If you want **production-grade data cleaning** tailored to your dataset:
 
-### [Hire Me on Fiverr →](https://fiverr.com/users/ireri_data_lab)
+### [Hire Me on Fiverr →](https://fiverr.com/ireri_data_lab)
 
 **I offer:**
 - ✅ Full dataset profiling (no row limits)
