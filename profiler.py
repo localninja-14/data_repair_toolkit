@@ -328,7 +328,54 @@ class Profiler:
         summary_text = f"<b>Dimensions:</b> {total_rows} rows × {total_cols} columns<br/>"
         story.append(Paragraph(summary_text, styles['Normal']))
         story.append(Spacer(1, 0.3 * inch))
-        
+
+        story.append(Paragraph("<b>Data Quality Score</b>", styles['Heading2']))
+
+        missing_avg = sum(col_metrics['missing_pct'] for col_metrics in self.profile.values()) / len(self.profile)
+        quality_score = max(0, 100 - (missing_avg * 100) - (sum(1 for m in self.profile.values() if m.get('whitespace_issue')) * 5))
+
+        story.append(Paragraph(f"Overall Quality: <b>{quality_score:.0f}/100</b>", styles["Heading3"]))
+        story.append(Spacer(1, 0.1 * inch))
+        story.append(Paragraph(f"Average Completeness: {(1 - missing_avg):.1%}", styles['Normal']))
+        story.append(Spacer(1, 0.3 * inch))
+
+        story.append(PageBreak())
+        story.append(Paragraph("<b>Column Summary Table</b>", styles['Heading2']))
+        story.append(Spacer(1, 0.2 * inch))
+
+        table_data = [["Column", "Type", "Completeness", "Unique", "Role", "Issues"]]
+
+        for col, metrics in self.profile.items():
+            issues = []
+            if metrics.get('missing_pct', 0) > 0.1:
+                issues.append("Missing")
+            if metrics.get('whitespace_issue'):
+                issues.append("Whitespace")
+            if metrics.get('duplicate_ratio', 0) > 0.01:
+                issues.append("Duplicates")
+
+            table_data.append([
+                col[:20],
+                metrics.get('dtype', '?')[:10],
+                f"{(1 - metrics.get('missing_pct', 0)):.0%}",
+                str(metrics.get('unique_count', 0)),
+                metrics.get('inferred_role', 'unknown'),
+                ", ".join(issues) if issues else "None"
+            ])
+
+        table =Table(table_data)
+        table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#1f4788')),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, 0), 12),
+            ('BOTTOMPADDING', (0, 0), (-1, 0), 8),
+            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+            ('GRID', (0, 0), (-1, -1), 1, colors.black),
+      ]))
+        story.append(table)
+      
         # Per-column profiles
         story.append(Paragraph("<b>Column Profiles</b>", styles['Heading2']))
         story.append(Spacer(1, 0.2 * inch))
